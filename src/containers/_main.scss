@@ -1,0 +1,95 @@
+@import "../styles/screen";
+main {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (max-width: $screen-md) {
+  main {
+    grid-template-columns: 1fr;
+  }
+  #mycard--experience {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  #mycard--contact {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  #mycard--career {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  #mycard--edu {
+    grid-column: 1;
+    grid-row: 4;
+  }
+  #mycard--skills {
+    grid-column: 1;
+    grid-row: 5;
+  }
+  #mycard--faq {
+    grid-column: 1;
+    grid-row: 6;
+  }
+}
+
+@media (min-width: $screen-md) {
+  main {
+    grid-template-columns: 2fr 1fr;
+  }
+  #mycard--experience {
+    grid-column: 1;
+    grid-row: 1 / 5;
+  }
+  #mycard--contact {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  #mycard--career {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  #mycard--edu {
+    grid-column: 2;
+    grid-row: 3;
+  }
+  #mycard--skills {
+    grid-column: 2;
+    grid-row: 4;
+  }
+  //#mycard--faq {
+  //  grid-column: 2;
+  //  grid-row: 5;
+  //}
+}
+
+@media print {
+  main {
+    grid-template-columns: 1fr 1fr;
+  }
+  #mycard--experience {
+    grid-column: 1 / 3;
+    grid-row: 2;
+  }
+  #mycard--contact {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  #mycard--career {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  #mycard--edu {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  #mycard--skills {
+    grid-column: 2;
+    grid-row: 3;
+  }
+  //#mycard--faq {
+  //  grid-column: 1 / 3;
+  //  grid-row: 4;
+  //}
+}

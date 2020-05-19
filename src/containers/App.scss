@@ -1,0 +1,36 @@
+@import "../styles/colors";
+@import "main";
+
+.App {
+  padding: 0 1rem;
+  padding-block-end: 1rem;
+  min-height: 100vh;
+}
+
+.App--light {
+  background-color: inherit;
+  color: inherit;
+
+  a {
+    color: inherit;
+  }
+}
+
+.App--dark {
+  background-color: $snowMan;
+  color: $snowWhite;
+
+  a {
+    color: $snowWhite;
+  }
+}
+
+@media print {
+  .App--dark {
+    background-color: $snowWhite;
+    color: $snowMan;
+    a {
+      color: $snowMan;
+    }
+  }
+}

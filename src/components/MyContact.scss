@@ -1,0 +1,9 @@
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  grid-gap: .5rem;
+
+  a {
+    text-decoration: none;
+  }
+}

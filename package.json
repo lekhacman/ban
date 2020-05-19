@@ -1,0 +1,101 @@
+{
+  "name": "ban",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://lekhacman.github.io/ban",
+  "author": "Andrew Le (https://lekhacman.github.io/cv)",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "fix": "eslint --fix src",
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
+    "coveralls": "cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.7",
+    "animate.css": "^3.7.2",
+    "bootstrap": "^4.3.1",
+    "hamburgers": "^1.1.3",
+    "prop-types": "^15.7.2",
+    "ramda": "^0.27.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-scripts": "^3.3.1"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^6.12.2",
+    "@testing-library/jest-dom": "^5.1.1",
+    "@testing-library/react": "^9.4.0",
+    "@types/jest": "^25.1.2",
+    "@types/prop-types": "^15.7.3",
+    "@types/ramda": "^0.26.33",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.3",
+    "coveralls": "^3.0.9",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-jest-dom": "^2.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-testing-library": "^2.2.1",
+    "gh-pages": "^2.1.1",
+    "node-sass": "^4.13.0",
+    "prettier": "^1.18.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:jest-dom/recommended",
+      "plugin:testing-library/recommended",
+      "prettier",
+      "react-app"
+    ],
+    "rules": {
+      "new-cap": "off",
+      "capitalized-comments": "off",
+      "prettier/prettier": [
+        "error",
+        {
+          "trailingComma": "es5",
+          "singleQuote": true
+        }
+      ]
+    },
+    "plugins": [
+      "prettier",
+      "testing-library",
+      "jest-dom"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/src/serviceWorker.js"
+    ]
+  }
+}
