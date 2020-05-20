@@ -10,8 +10,7 @@ const timeout = 60000;
 const config = {
   vendor: {
     metaWeather: {
-      url:
-        process.env.REACT_APP_METAWEATHER_URL || 'https://www.metaweather.com',
+      url: process.env.REACT_APP_METAWEATHER_URL,
       timeout,
     },
   },

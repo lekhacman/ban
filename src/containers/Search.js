@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Autosuggest from 'react-autosuggest';
 import './Search.scss';
-
 import {
   clearLocations,
   query,
-  search,
+  updateQuery,
   submit,
 } from '../redux/modules/weather';
 
@@ -16,8 +15,8 @@ function renderSuggestion(suggestion) {
 }
 let timerId = null;
 export function Search(props) {
-  function getSuggestionValue(suggestion) {
-    props.onSubmit(suggestion.id);
+  function handleSuggestionClick(suggestion) {
+    props.submit(suggestion.id);
     return suggestion.title;
   }
 
@@ -27,13 +26,13 @@ export function Search(props) {
       clearTimeout(timerId);
     }
     timerId = setTimeout(() => {
-      props.onQuery(value);
+      props.query(value);
       timerId = null;
     }, 1000);
   }
 
   function handleSelect(event, { newValue }) {
-    props.onSearch(event.target.value || newValue);
+    props.updateQuery(event.target.value || newValue);
   }
 
   return (
@@ -42,7 +41,7 @@ export function Search(props) {
         suggestions={props.locations}
         onSuggestionsFetchRequested={handleFetchRequested}
         onSuggestionsClearRequested={props.onClearSuggestion}
-        getSuggestionValue={getSuggestionValue}
+        getSuggestionValue={handleSuggestionClick}
         renderSuggestion={renderSuggestion}
         inputProps={{
           placeholder: 'Search',
@@ -57,10 +56,10 @@ export function Search(props) {
 Search.propTypes = {
   txt: PropTypes.string,
   locations: PropTypes.array,
-  onQuery: PropTypes.func,
-  onSearch: PropTypes.func,
+  query: PropTypes.func,
+  updateQuery: PropTypes.func,
   onClearSuggestion: PropTypes.func,
-  onSubmit: PropTypes.func,
+  submit: PropTypes.func,
 };
 
 /**
@@ -71,10 +70,10 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  onSearch: search,
-  onQuery: query,
+  updateQuery,
+  query,
   onClearSuggestion: clearLocations,
-  onSubmit: submit,
+  submit,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

@@ -29,7 +29,7 @@ const initState = {
 export default function reducer(state = initState, action) {
   const handler = {
     [QUERY]: () => ({ ...state, search: action.search }),
-    [SUGGEST]: handleQuery,
+    [SUGGEST]: updateSuggestions,
     [CLEAR_LOCATIONS]: () => ({ ...state, locations: [] }),
     [FETCHING]: () => ({ ...state, isFetching: true, err: '', days: [] }),
     [FETCH_SUCCESS]: handleFetchSuccess,
@@ -38,7 +38,7 @@ export default function reducer(state = initState, action) {
 
   return handler.hasOwnProperty(action.type) ? handler[action.type]() : state;
 
-  function handleQuery() {
+  function updateSuggestions() {
     return {
       ...state,
       ...action.data,
@@ -65,11 +65,11 @@ export default function reducer(state = initState, action) {
 }
 
 // Action Creators
-export function search(search) {
+export function updateQuery(search) {
   return dispatch => dispatch({ type: QUERY, search });
 }
 export function query(txt) {
-  return function(dispatch, getState, { api }) {
+  return function(dispatch, _, { api }) {
     if (txt) {
       api.weather.search(txt).then(
         locations => dispatch({ type: SUGGEST, data: { locations } }),
@@ -84,7 +84,7 @@ export function clearLocations() {
 }
 
 export function submit(locationId) {
-  return function(dispatch, getState, { api }) {
+  return function(dispatch, _, { api }) {
     dispatch({ type: FETCHING });
     api.weather.getWeather(locationId).then(
       pipe(
