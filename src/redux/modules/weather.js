@@ -1,5 +1,5 @@
 // Actions
-import { evolve, lensProp, map, over, pipe, take } from 'ramda';
+import { lensProp, map, over, pipe, take } from 'ramda';
 import moment from 'moment';
 
 export const QUERY = 'ban/weather/QUERY';
