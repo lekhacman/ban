@@ -44,6 +44,16 @@ jobs:
 
       # Deploy
       - run: yarn deploy
+#  deploy:
+#    docker:
+#      # specify the version you desire here
+#      - image: circleci/node:12.14
+#      working_directory: ~/repo
+#      environment:
+#        REACT_APP_METAWEATHER_URL: "https://cors-anywhere.herokuapp.com/https://www.metaweather.com"
+#
+#      steps:
+#        - run: yarn deploy
 
 #workflows:
 #  version: 2
