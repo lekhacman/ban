@@ -23,13 +23,3 @@
     color: $snowWhite;
   }
 }
-
-@media print {
-  .App--dark {
-    background-color: $snowWhite;
-    color: $snowMan;
-    a {
-      color: $snowMan;
-    }
-  }
-}

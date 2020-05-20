@@ -5,8 +5,8 @@ import MyCard from './MyCard';
 export function Day({ data }) {
   return (
     <MyCard title={data.date}>
-      <div>min: {data.temp.min}</div>
-      <div>max: {data.temp.max}</div>
+      <p>min: {data.temp.min}</p>
+      <p>max: {data.temp.max}</p>
     </MyCard>
   );
 }

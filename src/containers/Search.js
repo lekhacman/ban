@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import { Field, Form, Formik } from 'formik';
 import Autosuggest from 'react-autosuggest';
+import './Search.scss';
+
 import {
   clearLocations,
   query,
@@ -15,33 +16,6 @@ function renderSuggestion(suggestion) {
 }
 
 export function Search(props) {
-  // function query(fOnChange, event) {
-  //   props.onQuery(event.target.value);
-  //   fOnChange(event);
-  // }
-  // return (
-  //   <Formik initialValues={{ txt: props.txt }} onSubmit={props.onSubmit}>
-  //     <Form>
-  //       <div>
-  //         <Field name="txt">
-  //           {function({ field }) {
-  //             return (
-  //               <div>
-  //                 <input
-  //                   type="text"
-  //                   placeholder="Search"
-  //                   onChange={query.bind(null, field.onChange)}
-  //                 />
-  //               </div>
-  //             );
-  //           }}
-  //         </Field>
-  //         <button type="submit">Search</button>
-  //       </div>
-  //     </Form>
-  //   </Formik>
-  // );
-
   function getSuggestionValue(suggestion) {
     props.onSubmit(suggestion.id);
     return suggestion.title;
@@ -56,8 +30,7 @@ export function Search(props) {
   }
 
   return (
-    <div>
-      {/*<input type="text" placeholder="Search" onChange={handleQuery} />*/}
+    <section className="searcher">
       <Autosuggest
         suggestions={props.locations}
         onSuggestionsFetchRequested={handleFetchRequested}
@@ -70,7 +43,7 @@ export function Search(props) {
           onChange: handleSelect,
         }}
       />
-    </div>
+    </section>
   );
 }
 

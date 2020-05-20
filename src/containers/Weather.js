@@ -3,15 +3,18 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Day } from '../components/Day';
 import { pick } from 'ramda';
+import './Weather.scss';
 
 export function Weather(props) {
   return (
-    <div>
+    <section className="weather">
       {props.isFetching ? 'Loading' : null}
-      {props.err
-        ? props.err
-        : props.days.map((d, id) => <Day key={id} data={d} />)}
-    </div>
+      {props.err ? (
+        <div>{props.err}</div>
+      ) : (
+        props.days.map((d, id) => <Day key={id} data={d} />)
+      )}
+    </section>
   );
 }
 

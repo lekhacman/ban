@@ -2,16 +2,9 @@
 
 .mycard {
     background: linear-gradient($snowSunny, $snowWhite);
-}
-
-.App--dark {
-    .mycard {
-        background: $snowMan;
-    }
-
-    .mycard__title {
-        color: $snowMan;
-    }
+    flex-grow: 5;
+    flex-shrink: 1;
+    margin: 1rem .5rem;
 }
 
 .mycard__title {
@@ -28,5 +21,5 @@
 }
 
 .mycard__body {
-    padding: .8rem 2%;
+    padding: .5rem 1rem;
 }
