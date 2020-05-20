@@ -1,0 +1,1 @@
+describe('Weather Reducer', function() {});
