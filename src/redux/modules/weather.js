@@ -31,7 +31,7 @@ export default function reducer(state = initState, action) {
     [QUERY]: () => ({ ...state, search: action.search }),
     [SUGGEST]: handleQuery,
     [CLEAR_LOCATIONS]: () => ({ ...state, locations: [] }),
-    [FETCHING]: () => ({ ...state, isFetching: true, err: '' }),
+    [FETCHING]: () => ({ ...state, isFetching: true, err: '', days: [] }),
     [FETCH_SUCCESS]: handleFetchSuccess,
     [FETCH_ERROR]: handleFetchError,
   };
@@ -72,9 +72,8 @@ export function query(txt) {
   return function(dispatch, getState, { api }) {
     if (txt) {
       api.weather.search(txt).then(
-        locations =>
-          dispatch({ type: SUGGEST, data: { search: txt, locations } }),
-        () => dispatch({ type: SUGGEST, data: { search: txt, locations: [] } })
+        locations => dispatch({ type: SUGGEST, data: { locations } }),
+        () => dispatch({ type: SUGGEST, data: { locations: [] } })
       );
     }
   };

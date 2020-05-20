@@ -12,17 +12,24 @@ import {
 } from '../redux/modules/weather';
 
 function renderSuggestion(suggestion) {
-  return <div>{suggestion.title}</div>;
+  return <span>{suggestion.title}</span>;
 }
-
+let timerId = null;
 export function Search(props) {
   function getSuggestionValue(suggestion) {
     props.onSubmit(suggestion.id);
     return suggestion.title;
   }
 
+  // Suggestion is fetched after 1 second of idle
   function handleFetchRequested({ value }) {
-    props.onQuery(value);
+    if (timerId) {
+      clearTimeout(timerId);
+    }
+    timerId = setTimeout(() => {
+      props.onQuery(value);
+      timerId = null;
+    }, 1000);
   }
 
   function handleSelect(event, { newValue }) {
