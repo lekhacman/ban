@@ -3,6 +3,7 @@
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
 version: 2
+
 jobs:
   build:
     docker:
@@ -15,6 +16,8 @@ jobs:
       # - image: circleci/mongo:3.4.4
 
     working_directory: ~/repo
+    environment:
+      REACT_APP_METAWEATHER_URL: "https://cors-anywhere.herokuapp.com/https://www.metaweather.com"
 
     steps:
       - checkout
@@ -38,3 +41,18 @@ jobs:
       - run: yarn coveralls
       - store_artifacts:
           path: coverage
+  deploy:
+    machine:
+      enabled: true
+    working_directory: ~/repo
+    steps:
+      - run: yarn deploy
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
