@@ -43,7 +43,7 @@ jobs:
           path: coverage
 
       # Deploy
-      - run: yarn deploy
+#      - run: yarn deploy
 #  deploy:
 #    docker:
 #      # specify the version you desire here
