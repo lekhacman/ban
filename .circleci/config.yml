@@ -42,8 +42,6 @@ jobs:
       - store_artifacts:
           path: coverage
   deploy:
-    machine:
-      enabled: true
     working_directory: ~/repo
     steps:
       - run: yarn deploy
